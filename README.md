@@ -1,5 +1,6 @@
 # Excelicious
-Automating Excel processes, because why not?
+Automating Excel Processes with a simple GUI that combines useful functions
+
 
 
 
