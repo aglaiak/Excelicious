@@ -1,4 +1,7 @@
 # Excelicious
+
+![Logo](Logo-1.PNG)
+
 Automating Excel Processes with a Comprehensive GUI for a better barcode future.
 
 In many professional settings, particularly in academic and laboratory environments, Excel serves as the primary tool for documentation, tracking, and data management. However, manual input and management of data in Excel, especially for tasks like barcode generation and tracking, are susceptible to errors. Duplicate entries, inconsistent file naming, and manual data verification can lead to inaccuracies, duplicates and data loss.
@@ -9,7 +12,7 @@ This GUI-based application aims to provide a robust and user-friendly solution f
 
 The basic GUI is shown below:
 
-![alt text](image.png)
+![GUI](image.png)
 
 The user can select the function they are interested in. 
 
