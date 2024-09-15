@@ -5,7 +5,7 @@ Automating Excel Processes with a Comprehensive GUI for a better barcode future.
 
 In many professional settings, particularly in academic and laboratory environments, Excel serves as the primary tool for documentation, tracking, and data management. However, manual input and management of data in Excel, especially for tasks like barcode generation and tracking, are susceptible to errors. Duplicate entries, inconsistent file naming, and manual data verification can lead to inaccuracies, duplicates and data loss.
 
-This GUI-based application aims to provide a robust and user-friendly solution for individuals who rely on Excel to manage and track specific values—such as barcodes—across multiple spreadsheets. It automates common processes, including identifying duplicate values, verifying data entry consistency, and managing Excel file operations, all through an intuitive graphical interface.
+This GUI-based application aims to provide a robust and user-friendly solution for individuals who rely on Excel to manage and track specific values—such as barcodes, across multiple spreadsheets. It automates common processes, including identifying duplicate values, verifying data entry consistency, and managing Excel file operations, all through an intuitive graphical interface.
 
 # GUI
 
