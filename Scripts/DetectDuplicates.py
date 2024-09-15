@@ -183,12 +183,30 @@ def compare_values(edited_values):
         duplicate_count = len(duplicates)
         for value, files in duplicates.items():
             result_text += f"Value: {value}\nFiles: {', '.join(files)}\n\n"
-       
+
         result_text += f"Total number of duplicate barcodes: {duplicate_count}\n"
         # Display results in a scrollable messagebox
         display_scrollable_message("Potential Duplicates", result_text)
     else:
         messagebox.showinfo("No Duplicates", "No potential duplicates found.")
+
+def search_edited_barcodes():
+    """ Go through each barcode of an excel file, look for values that are flagged as 'edited'
+    and save the first 100 by moving upstream"""
+    folder_path = fetch_folder_path()
+    if not folder_path:
+        messagebox.showwarning("No Folder Selected", "Please select a folder.")
+        return
+
+    unique_barcodes = find_unique_barcodes(folder_path)
+    if unique_barcodes:
+        print("Unique Barcodes:")
+        print(unique_barcodes)  # Debugging print to show unique barcodes
+
+    edited_values = find_edited_values(folder_path, unique_barcodes)
+
+    if edited_values:
+        compare_values(edited_values)
 
 def display_scrollable_message(title, message):
     """Generate a scrollable window"""
@@ -213,43 +231,19 @@ def display_scrollable_message(title, message):
 
     root.mainloop()
 
-def on_frame_configure(canvas):
-    """Update scroll region."""
-    canvas.configure(scrollregion=canvas.bbox("all"))
-
-def search_edited_barcodes():
-    """ Go through each barcode of an excel file, look for values that are flagged as 'edited'
-    and save the first 100 by moving upstream"""
+def run_full_process():
+    """ Run the entire process """
     folder_path = fetch_folder_path()
     if not folder_path:
         messagebox.showwarning("No Folder Selected", "Please select a folder.")
         return
-    
+
     unique_barcodes = find_unique_barcodes(folder_path)
     if unique_barcodes:
         print("Unique Barcodes:")
         print(unique_barcodes)  # Debugging print to show unique barcodes
-        
+
     edited_values = find_edited_values(folder_path, unique_barcodes)
-    
+
     if edited_values:
         compare_values(edited_values)
-
-
-ctk.set_appearance_mode("System")  # Modes: "System" (default), "Dark", "Light"
-ctk.set_default_color_theme("dark-blue")  # Themes: "blue" (default), "green", "dark-blue"
-
-root = ctk.CTk()
-root.title("Histo Tool")
-
-frame = ctk.CTkFrame(root, width=400, height=200)
-frame.pack(padx=30, pady=30)
-
-label_title = ctk.CTkLabel(frame, text="Find Duplicate Barcodes", font=("Serif", 20))
-label_title.pack(pady=7)
-
-
-button_search = ctk.CTkButton(frame, text="Select Folder", command=search_edited_barcodes)
-button_search.pack(pady=10)
-
-root.mainloop()

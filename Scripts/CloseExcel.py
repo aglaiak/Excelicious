@@ -1,7 +1,8 @@
-## Excel Killer
+## Close Excel
 ## Script that force kills all active Excel Processes
 
 import psutil
+
 for proc in psutil.process_iter():
     if proc.name() == "EXCEL.EXE":
         proc.kill()
