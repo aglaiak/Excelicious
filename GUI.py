@@ -23,6 +23,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, Button, scrolledtext
 from Scripts.DetectDuplicates import run_full_process
 from Scripts.DetectInconsistencies import get_name_files, check_date
+from Scripts.CloseExcel import close_excel
 
 def display_scrollable_message(title, message):
     """Generate a scrollable window"""
@@ -108,9 +109,9 @@ button_inconsistencies.pack(pady=10)
 button_kill_excel = ctk.CTkButton(
     root, 
     text="Terminate all Excel processes",
-    command=PythonExcelKiller,
-    fg_color="#FF0000",  # Red color
-    hover_color="#CC0000"  # Darker red for hover effect
+    command=close_excel,
+    fg_color="#FF0000",  
+    hover_color="#CC0000"  
 )
 button_kill_excel.pack(pady=10)
 
