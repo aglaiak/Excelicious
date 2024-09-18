@@ -20,10 +20,35 @@ import pandas as pd
 import subprocess
 import customtkinter as ctk
 import tkinter as tk 
-from tkinter import filedialog, messagebox, Button, scrolledtext
+from tkinter import filedialog, messagebox, Button, scrolledtext, Label, Toplevel, Frame
 from Scripts.DetectDuplicates import run_full_process
 from Scripts.DetectInconsistencies import get_name_files, check_date
 from Scripts.CloseExcel import close_excel
+
+def choice(option):
+    pop.destroy()
+
+    if option == "yes":
+        close_excel()
+
+
+def pop_up_message():
+    global pop
+    pop = Toplevel(root)
+    pop.title("Message")
+    pop.geometry("300x250")
+    pop.config(bg = "grey")
+
+    pop_label = Label(pop, text="Are you sure you want to proceed?")
+    pop_label.pack(pady=10)
+
+    my_frame = Frame(pop, bg="grey")
+    my_frame.pack(pady=5)
+
+    yes = Button(my_frame, text="YES", command=lambda: choice("yes"))
+    yes.grid(row=0, column=0)
+    no = Button(my_frame, text="NO", command=lambda: choice("no"))
+    no.grid(row=0, column=1)
 
 def display_scrollable_message(title, message):
     """Generate a scrollable window"""
@@ -109,7 +134,7 @@ button_inconsistencies.pack(pady=10)
 button_kill_excel = ctk.CTkButton(
     root, 
     text="Terminate all Excel processes",
-    command=close_excel,
+    command=pop_up_message,
     fg_color="#FF0000",  
     hover_color="#CC0000"  
 )
