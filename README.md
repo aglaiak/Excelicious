@@ -36,7 +36,7 @@ format is deemed inconsistent.
 
 Further updates will be available upon request.
 
-### Terminate all Excel Process
+### Terminate all Excel Processes
 
 This function, serves as a tool that kills all active Excel instances. 
 
